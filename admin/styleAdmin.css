@@ -1,0 +1,90 @@
+main {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+tbody tr td a {
+    margin: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    background-color: azure;
+    height: 700px;
+}
+
+.logo,
+.menu-container {
+    width: 240px;
+    /* border-right: 1px solid #ccc; */
+}
+
+.logo img {
+    width: 60%;
+    margin: 1.5rem 2rem;
+}
+
+.menu-container ul {
+    list-style-type: none;
+}
+
+.menu-container ul li a {
+    text-decoration: none;
+    line-height: 3.5;
+    margin-left: 10%;
+}
+
+.input-nav {
+    position: relative;
+    left: 20%;
+}
+
+.form-add {
+    width: 600px;
+    position: relative;
+    left: 150px;
+    top: 60px;
+}
+
+.form-row {
+    padding: 8px 0;
+    display: flex;
+}
+
+.form-lable {
+    min-width: 120px;
+    margin-left: 20px;
+}
+
+.form-input,
+.form-row select {
+    flex: 0.5;
+    max-width: 80%;
+}
+
+.form-btn {
+    margin-left: 20px;
+}
+
+.form-btn button {
+    margin: 20px 10px;
+    width: 150px;
+    line-height: 2;
+}
+
+#form-lable {
+    padding-top: 18px;
+}
+
+.radio-input input {
+    display: block;
+    text-align: center;
+    margin: 5px 10px;
+}
+
+.radio-input label {
+    padding-left: 10px;
+}

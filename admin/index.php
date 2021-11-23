@@ -82,42 +82,45 @@ if (isset($_GET['act'])) {
             include "./product/list.php";
             break;
             // danh mục
-        case 'addcate':
-            if (isset($_POST['add']) && ($_POST['add'])) {
-                $name_category = $_POST['name_category'];
-                insert_category($name_category);
-                $noti = "Thêm thành công";
-            }
-            include "category/add.php";
-            break;
-        case 'listcate':
-            $listcategory = loadall_category();
-            include "category/list.php";
-            break;
-        case 'delcate':
-            if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
-                $sql = "delete from category where id_cate=" . $_GET['id_category'];
-                pdo_execute($sql);
-            }
-            $listcategory = loadall_category();
-            include "category/list.php";
-            break;
-        case 'editcate':
-            if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
-                $category = loadone_category($_GET['id_category']);
-            }
-            include "category/update.php";
-            break;
-        case 'updatecate':
-            if (isset($_POST['update']) && ($_POST['update'])) {
-                $id_category = $_POST['id_category'];
-                $name_category = $_POST['name_category'];
-                update_category($id_category, $name_category);
-                $noti = "Cập nhật thành công";
-            }
-            $listcategory = loadall_category();
-            include "category/list.php";
-            break;
+            case 'addcate':
+                if (isset($_POST['add']) && ($_POST['add'])) {
+                    $name_category = $_POST['name_category'];
+                    insert_category($name_category);
+                    $noti = "Thêm thành công";
+                }
+                include "category/add.php";
+                break;
+            case 'listcate':
+                $listcategory = loadall_category();
+                include "category/list.php";
+                break;
+            case 'delcate':
+                if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
+                    $sql = "delete from category where id_cate=" . $_GET['id_category'];
+                    pdo_execute($sql);
+                }
+                $listcategory = loadall_category();
+                include "category/list.php";
+                break;
+            case 'editcate':
+                if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
+                    $category = loadone_category($_GET['id_category']);
+                }
+                include "category/update.php";
+                break;
+            case 'updatecate':
+                if (isset($_POST['update']) && ($_POST['update'])) {
+                    $id_category = $_POST['id_category'];
+                    $name_category = $_POST['name_category'];
+                    update_category($id_category, $name_category);
+                    $noti = "Cập nhật thành công";
+                }
+                $listcategory = loadall_category();
+                include "category/list.php";
+                break;
+        }
+    }else{
+        include "home.php";
     }
 } else {
     include "home.php";

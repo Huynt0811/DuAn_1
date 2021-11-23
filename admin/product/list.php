@@ -1,6 +1,4 @@
-<?php
-
-?>
+    
 <h1>Danh sách sản phẩm</h1>
 <form action="index.php?act=listprd" method="post">
     <input class="form-control mx" type="text" name="kyw" placeholder="Nhập sản phẩm, danh mục muốn tìm"><br>

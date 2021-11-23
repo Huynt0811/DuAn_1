@@ -177,7 +177,7 @@ footer {
 
 .button-add {
     position: relative;
-    transform: translateY(100px);
+    transform: translateY(140px);
     transition: all linear 0.3s;
 }
 
@@ -443,3 +443,17 @@ footer {
         opacity: 1
     }
 }
+
+/* login */
+
+.form-login-label{
+    min-width: 100px;
+}
+.mg-form{
+    margin-top:30px;
+    margin-bottom: 70px;
+}
+.mg-form-left{
+    margin-left: 60px;
+}
+/* cart */

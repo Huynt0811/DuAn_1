@@ -30,22 +30,22 @@ function loadall_product($kyw = "", $iddm = 0)
 {
     $sql = "select * from product where 1";
     if ($kyw != "") {
-        $sql .= " and name like '%" . $kyw . "%'";
+        $sql .= " and name_product like '%" . $kyw . "%'";
     }
     if ($iddm > 0) {
-        $sql .= " and iddm= '" . $iddm . "'";
+        $sql .= " and id_category= '" . $iddm . "'";
     }
     $sql .= " order by id_product desc";
     $listproduct = pdo_query($sql);
     return $listproduct;
 }
 
-function loadone_ten_dm($iddm)
+function loadone_ten_dm($id_category)
 {
-    if ($iddm > 0) {
-        $sql = "select * from category where id_category=" . $iddm;
-        $dm = pdo_query_one($sql);
-        extract($dm);
+    if ($id_category > 0) {
+        $sql = "select * from category where id_category=" . $id_category;
+        $category = pdo_query_one($sql);
+        extract($category);
         return $name;
     }else{
         return "";

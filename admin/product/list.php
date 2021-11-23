@@ -1,6 +1,4 @@
-<?php
-
-?>
+    
 <h1>Danh sách sản phẩm</h1>
 <table class="table table-hover">
     <thead>

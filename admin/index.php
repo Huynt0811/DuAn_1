@@ -88,7 +88,7 @@
                 break;
             case 'delcate':
                 if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
-                    $sql = "delete from category where id_cate=" . $_GET['id_cate'];
+                    $sql = "delete from category where id_cate=" . $_GET['id_category'];
                     pdo_execute($sql);
                 }
                 $listcategory = loadall_category();
@@ -110,8 +110,6 @@
                 $listcategory = loadall_category();
                 include "category/list.php";
                 break;
-
-
         }
     }else{
         include "home.php";

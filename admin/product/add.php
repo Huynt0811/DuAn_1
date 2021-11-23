@@ -13,7 +13,7 @@
                     <?php
                         foreach ($listcate as $cate){
                             extract($cate);
-                            echo "<option value='".$id_category."'>$name_category</option>";
+                            echo "<option value='".$id_cate."'>$name_category</option>";
                         }
                     ?>
                 </select>

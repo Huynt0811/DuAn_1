@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./styleMain.css">
+    <link rel="stylesheet" href="../styleMain.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 
@@ -36,7 +37,7 @@
         <div class="wapper">
             <nav>
                 <div class="logo">
-                    <img src="./images/logo.png" alt="HADES">
+                    <img src="../images/logo.png" alt="HADES">
                 </div>
                 <ul>
                     <li><a href="#">SHOP ALL</a></li>
@@ -59,9 +60,9 @@
                     <div class="show-product-details-img">
                         <div class="slide-img">
                             <img src="./images/ESSENTIAL LONGSLEEVE.jpg" alt="">
-                            
+
                         </div>
-                        
+
                     </div>
                     <div class="show-product-details-right">
                         <div class="product-name ml mb">
@@ -81,12 +82,27 @@
 
                         </div>
 
-                        <div class="product-quantity ml mb">
-                            <input type="button" value="-" onclick="">
-                            <input type="text" name="" value="1" min = "1" id="">
-                            <input type="button" value="+" onclick="">
-
+                        <!-- <div class="">
+                            <button data-type="minus" type="button" class="quantity-left-minus btn"> 
+                                
+                            </button>
+                            <input style="text-align: center;" type="text" name="" value="1" min="1" id="">
+                            <span id="plus">
+                                <button  data-type="plus" type="button" class="quantity-left-plus btn"> 
+                                   
+                                </button>
+                            </span>
+                        </div> -->
+                        <div class="cart-plus-minus product-quantity ml mb" data-target="amount-1">
+                            <button class="btn cart-minus-1">
+                                <i class='fas fa-minus'></i>
+                            </button>
+                            <input style="width: 150px; text-align: center;" type="number" id="amount-1" value="1" min="1" max="300">
+                            <button class="btn cart-plus-1">
+                                <i class='fas fa-plus'></i>
+                            </button>
                         </div>
+
 
                         <div class="btn-add-to-cart">
                             <button type="submit" name="btn-add-to-cart"><strong><a href="">Thêm Vào Giỏ</a></strong></button>
@@ -97,13 +113,12 @@
                         </div>
 
                         <div class="product-desciption">
-                            <p>Chất liệu: Cotton 2 chiều 100% <br>
-                                Thiết kế và sản xuất bởi Hades Studio.
-                                </p>
+                            <p>Chất liệu: Cotton 2 chiều 100% <br> Thiết kế và sản xuất bởi Hades Studio.
+                            </p>
                         </div>
 
                     </div>
-                    
+
                 </div>
                 <div class="products-related">
                     <h1>SẢN PHẨM LIÊN QUAN</h1>
@@ -239,6 +254,8 @@
 
             </aside>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="../js/plusminus.js"></script>
     </main>
 </body>
 

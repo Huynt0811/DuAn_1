@@ -110,8 +110,6 @@
                 $listcategory = loadall_category();
                 include "category/list.php";
                 break;
-
-
         }
     }else{
         include "home.php";

@@ -1,5 +1,5 @@
 <?php
-if(is_array($category)){
+if (is_array($category)) {
     extract($category);
 }
 ?>
@@ -12,14 +12,14 @@ if(is_array($category)){
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Tên danh mục:</label>
-        <input type="text" name="name_category" class="form-control" value="<?php if(isset($name_category) && ($name_category!="")) echo $name_category;?>">
+        <input type="text" name="name_category" class="form-control" value="<?php if (isset($name_category) && ($name_category != "")) echo $name_category; ?>">
     </div>
     <div class="mb-3">
-        <input  type="hidden" name="id_category" value="<?php if(isset($id_category) && ($id_category!="")) echo $id_category;?>">
+    <input  type="hidden" name="id_category" value="<?php if(isset($id_cate) && ($id_cate!="")) echo $id_cate;?>"> 
         <input class="btn btn-warning" type="submit" name="update" value="Update">
         <a href="index.php?act=listcate"><input class="btn btn-success" type="button" value="Danh sách"></a>
     </div>
     <?php
-        if(isset($noti) && ($noti!="")) echo $noti;
+        if (isset($noti) && ($noti != "")) echo $noti;
     ?>
 </form>

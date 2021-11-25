@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- css hoàng -->
     <link rel="stylesheet" href="./styleMain.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- css huy -->
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    
 </head>
 
 <body>
@@ -59,58 +63,5 @@
                 </ul>
             </nav>
 
-            <aside>
-                <div class="container">
-                    <div class="banner">
-                        <div class="slideshow-container">
-
-                            <!-- Full-width images with number and caption text -->
-                            <div class="mySlides fade">
-                                <!-- <div class="numbertext">1 / 3</div> -->
-                                <img src="./images/banner.jpg" style="width:100%">
-                                <!-- <div class="text">Caption Text</div> -->
-                            </div>
-
-                            <div class="mySlides fade">
-                                <!-- <div class="numbertext">2 / 3</div> -->
-                                <img src="./images/banner.jpg" style="width:100%">
-                                <!-- <div class="text">Caption Two</div> -->
-                            </div>
-
-                            <!-- <div class="mySlides fade">
-                                <div class="numbertext">3 / 3</div>
-                                <img src="img3.jpg" style="width:100%">
-                                <div class="text">Caption Three</div>
-                            </div> -->
-
-                            <!-- Next and previous buttons -->
-                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        </div>
-                        <br>
-
-                        <!-- The dots/circles -->
-                        <!-- <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                            <span class="dot" onclick="currentSlide(3)"></span>
-                    </div> -->
-                        <script>
-                            var slideIndex = 0;
-                            showSlides();
-
-                            function showSlides() {
-                                var i;
-                                var slides = document.getElementsByClassName("mySlides");
-                                for (i = 0; i < slides.length; i++) {
-                                    slides[i].style.display = "none";
-                                }
-                                slideIndex++;
-                                if (slideIndex > slides.length) {
-                                    slideIndex = 1
-                                }
-                                slides[slideIndex - 1].style.display = "block";
-                                setTimeout(showSlides, 2000); // Change image every 2 seconds
-                            }
-                        </script>
-                    </div>
+            
+                

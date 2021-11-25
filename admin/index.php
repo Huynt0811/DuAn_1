@@ -119,9 +119,7 @@ if (isset($_GET['act'])) {
                 include "category/list.php";
                 break;
         }
-    }else{
-        include "home.php";
-    }
+    
 } else {
     include "home.php";
 }

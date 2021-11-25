@@ -59,9 +59,9 @@ function loadone_product($id_product)
     return $sp;
 }
 
-function load_product_cungloai($id, $iddm)
+function load_product_cungloai($id_product, $id_cate)
 {
-    $sql = "select * from product where iddm=" . $iddm . " AND id <>" . $id;
+    $sql = "select * from product where id_category=" . $id_cate . " AND id_product <>" . $id_product;
     $listproduct = pdo_query($sql);
     return $listproduct;
 }

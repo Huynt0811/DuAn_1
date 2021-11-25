@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include "./model/pdo.php";
 include "./model/category.php";
@@ -78,6 +79,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         default:
             # code...
             break;
+
     }
 } else {
     include "./view/home.php";

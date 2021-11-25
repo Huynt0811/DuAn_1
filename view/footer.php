@@ -1,9 +1,39 @@
-<footer>
 
-                        <div class="footer-list">
-                            <p>HỆ THỐNG CỬA HÀNG HADES</p>
-                            <div class="mt">
-                                <span>Hades FLAGSHIP STORE: 69 QUANG TRUNG, GÒ VẤP</span>
+            <footer>
+                    <div class="footer-list">
+                        <p>HỆ THỐNG CỬA HÀNG HADES</p>
+                        <div class="mt">
+                            <span>Hades FLAGSHIP STORE: 69 QUANG TRUNG, GÒ VẤP</span>
+                        </div>
+                        <div>
+                            <span>Store 2: 26 LÝ TỰ TRỌNG Q.1 ( THE NEW PLAYROUND)</span>
+                        </div>
+                        <div>
+                            <span>Store 3: 350 ĐIỆN BIÊN PHỦ F17 Q. BÌNH THẠNH (G-TOWN)</span>
+                        </div>
+                        <div>
+                            <span>Store 4: 4 PHẠM NGŨ LÃO, Q.1</span>
+                        </div>
+                        <div>
+                            <span>Store 5: 136 NGUYỄN HỒNG ĐÀO, Q.TÂN BÌNH</span>
+                        </div>
+                        <div>
+                            <span>Store 6: 235 PHAN TRUNG, TP.BIÊN HÒA</span>
+                        </div>
+                        <div>
+                            <span>Store 7: 15 NGUYỄN VIỆT HỒNG, Q.NINH KIỀU, TP. CẦN THƠ</span>
+                        </div>
+                        <div>
+                            <span>Store 8: Tầng 7 - tòa B2 - VINCOM BÀ TRIỆU, HÀ NỘI</span>
+                        </div>
+
+                    </div>
+                    <div class="footer-list">
+                        <p>CHÍNH SÁCH</p>
+                        <div class="mt" style="line-height: 2;font-size: 1rem;">
+                            <div>
+                                <a href="">- Chính sách sử dụng website</a>
+
                             </div>
                             <div>
                                 <span>Store 2: 26 LÝ TỰ TRỌNG Q.1 ( THE NEW PLAYROUND)</span>
@@ -100,12 +130,12 @@
 
                         </div>
 
-                    </footer>
+                </footer>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <script src="./js/plusminus.js"></script>
+            </aside>
+        </div>
 
-                </aside>
-            </div>
-        </main>
-    </body>
 
     </html>
 </body>

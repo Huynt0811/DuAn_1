@@ -13,6 +13,7 @@ header {
     background-color: #000;
     color: #fff;
     width: 100%;
+    justify-content: space-between;
 }
 
 header a {
@@ -36,8 +37,19 @@ header h1 {
 
 .header-left {
     display: flex;
-    padding-left: 75%;
 }
+
+.header-left div {
+    margin: 0px 15px;
+}
+
+
+/* 
+.header-left .giohang,
+.header-left .timkiem::after {
+    background: bisque;
+    color: black;
+} */
 
 nav {
     position: position;
@@ -60,12 +72,13 @@ nav li a {
     display: block;
 }
 
-.wapper {
+.wapper,
+.footer-new {
     display: grid;
     grid-template-columns: 15% 85%;
-    grid-gap: 10px;
+    /* grid-gap: 10px; */
     padding-top: .3%;
-    width: 100%;
+    width: 1325px;
 }
 
 .banner img {
@@ -110,11 +123,13 @@ nav li a {
 }
 
 .product-list img,
+.product-top10 img,
 .news img {
     width: 100%;
 }
 
-.product-list a {
+.product-list a,
+.product-top10 a {
     text-decoration: none;
 }
 
@@ -122,6 +137,7 @@ nav li a {
     text-align: center;
     overflow: hidden;
     float: left;
+    width: 25%;
 }
 
 .news {
@@ -175,11 +191,15 @@ footer {
 
 .button-add {
     position: relative;
-    transform: translateY(100px);
+    transform: translateY(200px);
     transition: all linear 0.3s;
 }
 
 .product-list:hover .button-add {
+    transform: translateY(0px);
+}
+
+.product-top10:hover .button-add {
     transform: translateY(0px);
 }
 
@@ -458,6 +478,7 @@ footer {
     margin-left: 60px;
 }
 
+
 /* cart */
 
 body {
@@ -598,7 +619,8 @@ input:focus::-webkit-input-placeholder {
     color: transparent
 }
 
-.btn {
+
+/* .btn {
     background-color: #000;
     border-color: #000;
     color: white;
@@ -607,7 +629,7 @@ input:focus::-webkit-input-placeholder {
     margin-top: 4vh;
     padding: 1vh;
     border-radius: 0
-}
+} */
 
 .btn:focus {
     box-shadow: none;

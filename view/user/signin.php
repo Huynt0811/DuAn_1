@@ -1,4 +1,6 @@
-<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+<aside>
+    <div class="container">
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
     <?php
     if (isset($_SESSION['user'])) {
         extract($_SESSION['user']);
@@ -30,17 +32,25 @@
                         Remember me
                     </label>
                 </div>
-                <a href="index.php>act=quen_mk" class="text-body">Quên mật khẩu</a>
+                <a href="index.php?act=quen_mk" class="text-body">Quên mật khẩu</a>
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">
                 <input name="dangnhap" type="submit" value="Đăng nhập" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" />
-                <p class="small fw-bold mt-2 pt-1 mb-0">Bạn chưa có tài khoản? <a href="#!" class="link-danger">Đăng ký</a></p>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Bạn chưa có tài khoản? <a href="index.php?act=dangky" class="link-danger">Đăng ký</a></p>
             </div>
 
         </form>
-
+        <?php
+            if (isset($thongbao) && ($thongbao != "")) {
+                echo $thongbao;
+            }
+        ?>
     <?php
     }
     ?>
 </div>
+    </div>
+
+</aside>
+

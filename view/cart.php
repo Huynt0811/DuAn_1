@@ -1,0 +1,280 @@
+<?php
+    session_start();
+    // xóa hết giỏ hàng
+    if(isset($_GET['delcart'])&&($_GET['delcart']==1)){
+        unset($_SESSION['giohang']);
+    }
+    // xóa sản phẩm giỏ hàng
+    if(isset($_GET['delid'])&&($_GET['delid']>=0)){
+        array_splice($_SESSION['giohang'],$_GET['delid'],1);
+    }
+    // lấy dữ liệu
+    if(!isset($_SESSION['giohang'])){
+        $_SESSION['giohang']=[]; 
+    }
+    // Kiểm tra giỏ hàng có hay k
+    
+
+    // thêm dữ liệu vào giỏ hàng
+    if(isset($_POST['addcart'])){
+        $nameprd = $_POST['nameprd'];
+        $namecate = $_POST['namecate'];
+        $img = $_POST['imgprd'];
+        $priceprd = $_POST['priceprd'];
+        $soluong = $_POST['soluong'];
+        $fl = 0;
+        for ($i=0; $i < sizeof($_SESSION['giohang']); $i++) { 
+            if($_SESSION['giohang'][$i][2]==$nameprd){
+                $fl=1;
+                $soluongnew=$soluong+$_SESSION['giohang'][$i][1];
+                $_SESSION['giohang'][$i][1]=$soluongnew;
+                break;
+            }
+        }
+        if($fl==0){
+            $prd=[$priceprd,$soluong,$nameprd,$img,$namecate];
+            $_SESSION['giohang'][]=$prd;
+        }
+    }  
+    
+    function showcart(){
+        if (isset($_SESSION['giohang'])&& (is_array($_SESSION['giohang']))) {
+            $tong = 0;
+            for ($i=0; $i < sizeof($_SESSION['giohang']); $i++) { 
+                $tt = $_SESSION['giohang'][$i][0] * $_SESSION['giohang'][$i][1];
+                $tong += $tt;
+                echo'<div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="../'.$_SESSION['giohang'][$i][3].'">
+                            </div>
+                            <div class="col">
+                                <div class="row text-muted">'.$_SESSION['giohang'][$i][4].'</div>
+                                <div class="row">'.$_SESSION['giohang'][$i][2].'</div>
+                            </div>
+                            <div class="col"> <a href="#"></a><a href="#" class="border">'.$_SESSION['giohang'][$i][1].'</a><a href="#"></a>
+                            </div>
+                            <div class="col">'.$tt.' đ<a href="cart.php?delid='.$i.'" class="close"><button class="btn btn-danger">X</button></a></div>
+                        </div>
+                    </div>';
+            }
+            echo '<div class="back-to-shop"><a href="../index.php">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            </div>
+            <div class="col-md-4 summary">
+                <div>
+                    <h5><b>Summary</b></h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;">ITEMS 3</div>
+                    <div class="col text-right">&euro; 132.00</div>
+                </div>
+                <form>
+                    <p>SHIPPING</p> <select>
+                        <option class="text-muted">Standard-Delivery- &euro;5.00</option>
+                    </select>
+                    <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right">'.$tong.' đ</div>
+                </div> <a href="cart.php?delcart=1" class="close"><button class="btn btn-danger">Xóa giỏ hàng</button></a></div>
+            </div>';
+        }
+    }
+?>
+            <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styleMain.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+    <main>
+        <header>
+            <div class="header-right">
+                <h1><a href="./index.html">Name</a></h1>
+            </div>
+            <div class="header-left">
+                <div>
+                    <span>
+                        <a href="#">Đăng Nhập</a>
+                        /
+                        <a href="#">Đăng Kí</a>
+                    </span>
+                </div>
+                <div>
+                    | <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></a>
+                </div>
+                <div>
+                    |
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="wapper">
+            <nav>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="HADES">
+                </div>
+                <ul>
+                    <li><a href="#">SHOP ALL</a></li>
+                    <li><a href="#">TOPS</a></li>
+                    <li><a href="#">BOTTOMS</a></li>
+                    <li><a href="#">OUTERWEAR</a></li>
+                    <li><a href="#">FOOTERWEAR</a></li>
+                    <li><a href="#">HAT</a></li>
+                    <li><a href="#">BAGS</a></li>
+                    <li><a href="#">SALE</a></li>
+                    <li><a href="#">INSTAGRAM</a></li>
+                </ul>
+            </nav>
+
+            <aside>
+                <!-- end php header -->
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-8 cart">
+                            <div class="title">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4><b>Shopping Cart</b></h4>
+                                    </div>
+                                    <div class="col align-self-center text-right text-muted">3 items</div>
+                                    
+                                </div>
+                            </div>
+                            <?php showcart(); ?>
+                            
+                            
+                    </div>
+                </div>
+
+
+            </aside>
+        </div>
+        <div class="footer-new">
+            <div></div>
+            <footer>
+
+                <div class="footer-list">
+                    <p>HỆ THỐNG CỬA HÀNG HADES</p>
+                    <div class="mt">
+                        <span>Hades FLAGSHIP STORE: 69 QUANG TRUNG, GÒ VẤP</span>
+                    </div>
+                    <div>
+                        <span>Store 2: 26 LÝ TỰ TRỌNG Q.1 ( THE NEW PLAYROUND)</span>
+                    </div>
+                    <div>
+                        <span>Store 3: 350 ĐIỆN BIÊN PHỦ F17 Q. BÌNH THẠNH (G-TOWN)</span>
+                    </div>
+                    <div>
+                        <span>Store 4: 4 PHẠM NGŨ LÃO, Q.1</span>
+                    </div>
+                    <div>
+                        <span>Store 5: 136 NGUYỄN HỒNG ĐÀO, Q.TÂN BÌNH</span>
+                    </div>
+                    <div>
+                        <span>Store 6: 235 PHAN TRUNG, TP.BIÊN HÒA</span>
+                    </div>
+                    <div>
+                        <span>Store 7: 15 NGUYỄN VIỆT HỒNG, Q.NINH KIỀU, TP. CẦN THƠ</span>
+                    </div>
+                    <div>
+                        <span>Store 8: Tầng 7 - tòa B2 - VINCOM BÀ TRIỆU, HÀ NỘI</span>
+                    </div>
+
+                </div>
+                <div class="footer-list">
+                    <p>CHÍNH SÁCH</p>
+                    <div class="mt" style="line-height: 2;font-size: 1rem;">
+                        <div>
+                            <a href="">- Chính sách sử dụng website</a>
+                        </div>
+                        <div>
+                            <a href="">- Phương thức thanh toán</a>
+                        </div>
+                        <div>
+                            <a href="">- Chính sách đổi trả</a>
+                        </div>
+                        <div>
+                            <a href="">- chính sách giao nhận - vận chuyển</a>
+                        </div>
+                        <div>
+                            <a href="">- Điều khoản dịch vụ</a>
+                        </div>
+                        <div>
+                            <a href="">- Hướng dẫn mua hàng</a>
+                        </div>
+                        <div>
+                            <a href="">- Chính sách bảo mật</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-list">
+                    <p>THÔNG TIN LIÊN HỆ</p>
+                    <div class="mt">
+                        <div>
+                            <span>- CÔNG TY TNHH HADES Địa chỉ: 45 Phan Chu Trinh, P. Bến Thành, Quận 1, TP. Hồ Chí
+                                Minh</span>
+                        </div>
+                        <div>
+                            <span>- SỐ GCNĐKDN: 0316393653</span>
+                        </div>
+                        <div>
+                            <span>- Ngày cấp: 20/07/2020</span>
+                        </div>
+                        <div>
+                            <span>- Tuyển dụng: hr@hades.vn</span>
+                        </div>
+                        <div>
+                            <span>- Website: hades.vn</span>
+                        </div>
+                        <div>
+                            <span>- Liên hệ CSKH: support@hades.vn</span>
+                        </div>
+                        <div>
+                            <span>- For business: contact@hades.vn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-list">
+                    <div class="">
+                        <p>FOLLOW US ON SOCIAL MEDIA</p>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                <path
+                                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                            </svg></a>
+                        <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                            </svg></a>
+
+                    </div>
+
+                </div>
+
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>
+        

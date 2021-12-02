@@ -23,6 +23,7 @@ function pdo_execute($sql){
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
+        $last_id = $conn -> lastInsertId();
     }
     catch(PDOException $e){
         throw $e;
@@ -30,6 +31,7 @@ function pdo_execute($sql){
     finally{
         unset($conn);
     }
+    return $last_id;
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)

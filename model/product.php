@@ -5,6 +5,7 @@ function insert_product($tensp, $giasp, $hinh, $mota, $iddm)
     pdo_execute($sql);
 }
 
+
 function delete_product($id_product)
 {
     $sql = "delete from product where id_product=" . $id_product;

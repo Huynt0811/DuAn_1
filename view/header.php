@@ -84,6 +84,7 @@ if (isset($_SESSION['user'])) {
                     <img src="./images/logo.png" alt="HADES">
                 </div>
                 <ul>
+                    <li><a href="index.php">SHOP ALL</a></li>
                     <?php
                     foreach ($lstcate as $cate) {
                         extract($cate);

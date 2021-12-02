@@ -59,6 +59,12 @@
             <p>New Arrivals</p>
             <a href="#">Xem Thêm</a>
         </div>
+        <form class="search_home" action="index.php?act=prd_search" method="post">
+                <div class="col-auto display-4 d-flex bd-highlight ">
+                    <input type="text" name="kyw" class="form-control col-form-label col-md" >
+                    <input type="submit" name="timkiem" value="Tìm kiếm" class="btn btn-danger col-3">
+                </div>
+        </form>
         <div class="product">
         <?php
                 

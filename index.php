@@ -125,6 +125,22 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
         case 'cart':     
             include "./view/cart/cart.php";
             break;
+        case 'prd_search':
+            if (isset($_POST['kyw']) && ($_POST['kyw'] != "")) {
+                $kyw = $_POST['kyw'];
+            } else {
+                $kyw = "";
+            }
+            if (isset($_GET['id_category']) && ($_GET['id_category'] > 0)) {
+                $id_category = $_GET['id_category'];
+            } else {
+                $id_category = 0;
+            }
+            $tendm = loadone_ten_dm($id_category);
+            $lstprd = loadall_product($kyw,$id_category);
+            include "./view/product.php";
+
+            break;
         default:
             # code...
             break;

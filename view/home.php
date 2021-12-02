@@ -1,5 +1,5 @@
 <aside>
-<div class="container">
+    <div class="container">
         <div class="banner">
             <div class="slideshow-container">
 
@@ -58,6 +58,12 @@
             <p>New Arrivals</p>
             <a href="#">Xem Thêm</a>
         </div>
+        <form class="search_home" action="index.php?act=prd_search" method="post">
+                <div class="col-auto display-4 d-flex bd-highlight ">
+                    <input type="text" name="kyw" class="form-control col-form-label col-md" >
+                    <input type="submit" name="timkiem" value="Tìm kiếm" class="btn btn-danger col-3">
+                </div>
+        </form>
         <div class="product">
         <?php
                 
@@ -115,6 +121,7 @@
             <p>Top 10</p>
             <a href="#">Xem Thêm</a>
         </div>
+        
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -272,4 +279,4 @@
                     </div>
                 </div>
 </aside>
-    
+        </div>

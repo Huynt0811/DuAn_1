@@ -4,6 +4,10 @@ body {
     box-sizing: border-box;
 }
 
+main {
+    width: 100%;
+}
+
 body a {
     color: #000
 }
@@ -72,13 +76,20 @@ nav li a {
     display: block;
 }
 
-.wapper,
+.wapper {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    /* grid-gap: 10px; */
+    padding-top: .3%;
+    width: 100%;
+}
+
 .footer-new {
     display: grid;
     grid-template-columns: 15% 85%;
     /* grid-gap: 10px; */
     padding-top: .3%;
-    width: 1325px;
+    width: 100%;
 }
 
 .banner img {
@@ -659,4 +670,8 @@ a:hover {
     background-repeat: no-repeat;
     background-position-x: 95%;
     background-position-y: center
+}
+
+.container {
+    width: 100%;
 }

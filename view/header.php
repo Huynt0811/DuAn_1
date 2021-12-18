@@ -31,7 +31,8 @@ if (isset($_SESSION['user'])) {
             <div class="header-right">
                 <?php
                 if (isset($_SESSION['user'])) {
-                    echo '<h1><a href=""><?= $username ?></a></h1>';
+                    extract($_SESSION['user']);
+                    echo '<h1><a href="">Người Dùng: '.$username.'</a></h1>';
                 } else {
                     echo '<h1><a href="">khách hàng</a></h1>';
                 }
@@ -81,7 +82,7 @@ if (isset($_SESSION['user'])) {
         <div class="wapper">
             <nav>
                 <div class="logo">
-                    <img src="./images/logo.png" alt="HADES">
+                    <a href="index.php"><img src="./images/logo.png" alt="HADES"></a>
                 </div>
                 <ul>
                     <li><a href="index.php">SHOP ALL</a></li>

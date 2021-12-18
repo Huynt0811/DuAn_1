@@ -20,9 +20,9 @@ function loadall_product_home()
     return $listproduct;
 }
 
-function loadall_product_top10()
+function loadall_product_top12()
 {
-    $sql = "select * from product where 1 order by luotxem desc limit 0,10";
+    $sql = "select * from product where 1 order by view desc limit 0,12";
     $listproduct = pdo_query($sql);
     return $listproduct;
 }

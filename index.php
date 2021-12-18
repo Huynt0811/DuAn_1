@@ -7,8 +7,10 @@ include "./model/product.php";
 include "./model/taikhoan.php";
 include "./model/thongke.php";
 include "./model/comment.php";
+
 $prdnew = loadall_product_home();
 $lstcate = loadall_category();
+$prdtop12 = loadall_product_top12();
 include "./view/header.php";
 
 
@@ -26,7 +28,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             }
             break;
         case 'prd_detail':
+            
             if(isset($_GET['idprd'])&&$_GET['idprd']>0){
+                
                 $id_product = $_GET['idprd'];
                 $oneprd = loadone_product($id_product);
                 extract($oneprd);
@@ -51,8 +55,9 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $username = $_POST['user'];
                     $password = $_POST['password'];
                     $address = $_POST['address'];
-                    insert_taikhoan($username,$password,$email,$address);
+                    insert_user($username,$password,$email,$address);
                     $thongbao = "Đăng kí thành công. Vui lòng đăng nhập";
+                    header("location: index.php?act=dangnhap");
                 }
             }
             include "./view/user/signup.php";
@@ -69,15 +74,18 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $checkuser = checkuser($username, $password);
                     if (is_array($checkuser)) {
                         $_SESSION['user'] = $checkuser;
-                        //header('Location: index.php');
+                        include "./view/user/info.php";
                     } else {
                         $thongbao = "Tài khoản không tồn tại. Vui lòng đăng ký!";
                     }
                 }
             }
-            include "./view/user/signin.php";
+                include "./view/user/signin.php";
+            
             break;
-
+        case 'thongtin':     
+            include "./view/user/info.php";
+            break;
         case 'edit_tk':
             if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
                 if (empty($_POST["email"])) {
@@ -91,16 +99,16 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 } else if (empty($_POST["birthdate"])) {
                     $thongbao = "<span style='color:red;'>Error: Chưa nhập ngày tháng năm sinh</span>";
                 } else {
+                    $username = $_POST['user'];
+                    $password = $_POST['password'];
+                    $email = $_POST['email'];
+                    $phone = $_POST['phone'];
+                    $birthdate = $_POST['birthdate'];
+                    update_user($id_user, $username, $password, $email, $phone, $birthdate);
                     $thongbao = "Cập nhật thành công!";
+                    include "./view/user/info.php";
+                    
                 }
-                $username = $_POST['user'];
-                $password = $_POST['password'];
-                $email = $_POST['email'];
-                $phone = $_POST['phone'];
-                $birthdate = $_POST['birthdate'];
-                update_user($id_user, $username, $password, $email, $phone, $birthdate);
-                // header('Location:index.php?act=edit.php');
-
             }
             include "./view/user/edit.php";
             break;

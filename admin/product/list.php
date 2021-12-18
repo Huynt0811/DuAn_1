@@ -36,10 +36,11 @@
             }
             $editprd = "index.php?act=editprd&id_product=" . $id_product;
             $delprd = "index.php?act=delprd&id_product=" . $id_product;
+            $price = number_format($price, 0, '', ',');
             echo '<tr>
                     <td>' . $index + 1 . '</td>
                     <td>' . $name_product . '</td>
-                    <td>' . $price . '</td>
+                    <td>' . $price . ' đ</td>
                     <td>' . $hinh . '</td>
                     <td>' . $mota . '</td>
                     <td><a href="' . $editprd . '"><input class="btn btn-outline-warning mr-2" type="button" value="Sửa"></a><a href="' . $delprd . '"><input class="btn btn-outline-danger" type="button" value="Xóa"</a></td>

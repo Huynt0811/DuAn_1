@@ -60,8 +60,8 @@
         </div>
         <form class="search_home" action="index.php?act=prd_search" method="post">
                 <div class="col-auto display-4 d-flex bd-highlight ">
-                    <input type="text" name="kyw" class="form-control col-form-label col-md" >
-                    <input type="submit" name="timkiem" value="Tìm kiếm" class="btn btn-danger col-3">
+                    <input type="text" name="kyw" class="form-control col-form-label col-md mr" >
+                    <input type="submit" name="timkiem" value="Tìm kiếm" class="btn btn-dark col-3">
                 </div>
         </form>
         <div class="product">
@@ -69,12 +69,10 @@
                 
                 $i=1;
                 $a=4;
-           
-                    
-                
-                
                 foreach($prdnew as $prd){
                     extract($prd);
+                    
+                    
                     foreach ($lstcate as $cate) {
                         extract($cate);
                         if($id_category==$id_cate){
@@ -89,7 +87,7 @@
                         }
                         echo '<div class="product-list mr">
                                 <a href="'. $linkprd .'"><img src="'. $img_path .'" alt=""></a>
-                                <p  href="">' . $name_product . '</p>
+                                
                                 
                                 <form action="./view/cart.php" method="POST" class="button-add" enctype="multipart/form-data">
                                     <input type="hidden" name="priceprd" value="' . $price . '">
@@ -102,7 +100,8 @@
                                     <button type="submit" class="action">Xem sản phẩm</button>
                                     <button type="submit" name="addcart" class="action add-to-cart">Thêm vào giỏ</button>
                                 </form>
-                                <p>$' . $price . '</p>
+                                <p  href="">' . $name_product . '</p>
+                                <p>' . number_format($price). ' đ</p>
                             </div>';
                         if($i==4 || $i==8 || $i==12){
                             echo '</div>';
@@ -124,105 +123,36 @@
         
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES VINTAGE SNAKE WASH TEE.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
+                <?php
+                    foreach ($prdtop12 as $prd12) {
+                        extract($prd12);
+                        foreach ($lstcate as $cate1) {
+                            extract($cate1);
+                            if($id_category==$id_cate){
+                                $namecate = $name_category;
+                                break;
+                            }
+                        }
+                        $linkprd ="index.php?act=prd_detail&idprd=".$id_product;
+                        $img_path = "upload/".$img;
+                        echo ' <div class="swiper-slide">
+                        <div class="product-top10">
+                            <a href="'.$linkprd.'"><img src="'. $img_path .'" alt=""></a>
+                            <a href="">'.$name_product.'</a>
+                            <form action="./view/cart.php" method="POST" class="button-add" enctype="multipart/form-data">
+                                <input type="hidden" name="priceprd" value="' . $price . '">
+                                <input type="hidden" name="imgprd" value="'. $img_path .'">
+                                <input type="hidden" name="nameprd" value="' . $name_product . '">
+                                <input type="hidden" name="soluong" value="1">
+                                <input type="hidden" name="namecate" value="'.$namecate.'">
+                                <button type="submit" class="action">Mua ngay</button>
+                                <button type="submit" name="addcart" class="action add-to-cart">Thêm vào giỏ</button>
+                            </form>
+                            <p>'.$price.' đ</p>
                         </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10"> 
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="product-top10">
-                        <a href=""><img src="./images/HADES NEW BALANCE TROUSER PANTS.jpg" alt=""></a>
-                        <a href="">HADES NEW BALANCE TROUSER PANTS</a>
-                        <div class="button-add">
-                            <button type="submit" class="action">Mua ngay</button>
-                            <button type="submit" class="action add-to-cart">Thêm vào giỏ</button>
-                        </div>
-                        <p>450,000₫</p>
-                    </div>
-                </div>
+                    </div>';
+                    }
+                ?>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -249,29 +179,6 @@
         </script>
         <div class="title-news">
             <p style="text-align:center;font-size: 1.7rem;">The Journal</p>
-            <div class="news">
-                <div class="news-list">
-                    <a href=""><img src="./images/post1.jpg" alt=""></a>
-                    <p>Thứ ba 16,3,2021</p>
-                    <h5>Hades - Một Trong Những "Phát Súng Đầu Tiên" của Vietnamese Streetwear</h5>
-                    <p>Ra đời từ những năm cuối thế kỷ 20, streetwear là phong cách thời trang phổ biến của cộng đồng đam mê bộ môn skateboard.Dù mới “bén duyên” với giới...</p>
-                    <a href="#">Xem Thêm</a>
-                </div>
-                <div class="news-list">
-                    <a href=""><img src="./images/post1.jpg" alt=""></a>
-                    <p>Thứ ba 16,3,2021</p>
-                    <h5>Hades - Một Trong Những "Phát Súng Đầu Tiên" của Vietnamese Streetwear</h5>
-                    <p>Ra đời từ những năm cuối thế kỷ 20, streetwear là phong cách thời trang phổ biến của cộng đồng đam mê bộ môn skateboard.Dù mới “bén duyên” với giới...</p>
-                    <a href="#">Xem Thêm</a>
-                </div>
-                <div class="news-list">
-                    <a href=""><img src="./images/post1.jpg" alt=""></a>
-                    <p>Thứ ba 16,3,2021</p>
-                    <h5>Hades - Một Trong Những "Phát Súng Đầu Tiên" của Vietnamese Streetwear</h5>
-                    <p>Ra đời từ những năm cuối thế kỷ 20, streetwear là phong cách thời trang phổ biến của cộng đồng đam mê bộ môn skateboard.Dù mới “bén duyên” với giới...</p>
-                    <a href="#">Xem Thêm</a>
-                </div>
-            </div>
             <div class="video">
                         <video controls>
                             <source src="./images/video.mp4">

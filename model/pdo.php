@@ -2,14 +2,19 @@
 /**
  * Mở kết nối đến CSDL sử dụng PDO
  */
+
 function pdo_get_connection(){
     $dburl = "mysql:host=localhost;dbname=duan1tin;charset=utf8";
     $username = 'root';
     $password = '';
-
-    $conn = new PDO($dburl, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+    try{
+        $conn = new PDO($dburl, $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+    }catch(PDOException $e){
+        return $e->getMessage();
+    }
+    
 }
 /**
  * Thực thi câu lệnh sql thao tác dữ liệu (INSERT, UPDATE, DELETE)
@@ -24,6 +29,7 @@ function pdo_execute($sql){
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $last_id = $conn -> lastInsertId();
+        return $last_id;
     }
     catch(PDOException $e){
         throw $e;
@@ -31,7 +37,6 @@ function pdo_execute($sql){
     finally{
         unset($conn);
     }
-    return $last_id;
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
@@ -47,6 +52,7 @@ function pdo_query($sql){
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $rows = $stmt->fetchAll();
+
         return $rows;
     }
     catch(PDOException $e){

@@ -1,5 +1,5 @@
 <?php
-     function insert_taikhoan($username,$password,$email,$address){
+     function insert_user($username,$password,$email,$address){
         $sql = "INSERT INTO users(username,password,email,address) values('$username','$password','$email','$address')";
         pdo_execute($sql);
     }
@@ -18,8 +18,8 @@
         pdo_execute($sql);
     }
     function loadall_user(){
-        $sql = "SELECT * FROM users ORDER BY id DESC";
-        $listtaikhoan = pdo_query($sql);
-        return $listtaikhoan;
+        $sql = "SELECT * FROM users ORDER BY id_user DESC";
+        $listuser = pdo_query($sql);
+        return $listuser;
     }
 ?>

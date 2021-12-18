@@ -24,12 +24,12 @@
 
         <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3">Phone Number</label>
-            <input name="phone" value="<?=$phone?>" type="number" id="form3Example3" class="form-control form-control-lg" placeholder="Nhập số điện thoại" />
+            <input name="phone" value="<?=$phone?>" type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Nhập số điện thoại" />
         </div>
 
         <div class="form-outline mb-4">
             <label class="form-label" for="form3Example3">Birth Date</label>
-            <input name="birthdate" value="<?=$birthdate?>" type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Nhập ngày sinh" />
+            <input name="birthdate" value="<?=$birthdate?>" type="date" id="form3Example3" class="form-control form-control-lg" placeholder="Nhập ngày sinh" />
         </div>
 
         <div class="text-center text-lg-start mt-4 pt-2">
@@ -43,4 +43,5 @@
         echo $thongbao;
     }
     ?>
+</div>
 </div>

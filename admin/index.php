@@ -5,6 +5,9 @@ include "../model/category.php";
 include "../model/product.php";
 include "../model/taikhoan.php";
 include "../model/comment.php";
+include "../model/bill.php";
+include "../model/thongke.php";
+
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
             // sản phẩm
@@ -117,6 +120,40 @@ if (isset($_GET['act'])) {
                 }
                 $listcategory = loadall_category();
                 include "category/list.php";
+                break;
+            case 'qltk':
+                $listuser = loadall_user();
+                include "user/list.php";
+                break;
+            case 'qldh':
+                $listbill = loadall_bill();
+                
+                include "bill/list.php";
+                break;
+            case 'ctdh':
+                $id_bill = $_GET['idbill'];
+                $listcart = loadall_cart($id_bill);
+                include "cart/list.php";
+                break;
+            case 'qlbl':
+                $listcmt = loadall_comment(0);
+                $listuser = loadall_user();
+                $listprd = loadall_product("",0);
+                include "comment/list.php";
+                break;
+            case 'delcmt':
+                if (isset($_GET['id_cmt']) && ($_GET['id_cmt'] > 0)) {
+                    $sql = "delete from comment where id_cmt=" . $_GET['id_cmt'];
+                    pdo_execute($sql);
+                }
+                $listcmt = loadall_comment(0);
+                $listuser = loadall_user();
+                $listprd = loadall_product("",0);
+                include "comment/list.php";
+                break;
+            case 'thongke':
+                $listtk = loadall_thongke();
+                include "thongke/list.php";
                 break;
         }
 

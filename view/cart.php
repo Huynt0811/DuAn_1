@@ -12,17 +12,16 @@
     if(!isset($_SESSION['giohang'])){
         $_SESSION['giohang']=[]; 
     }
-    // Kiểm tra giỏ hàng có hay k
-    
-
     // thêm dữ liệu vào giỏ hàng
     if(isset($_POST['addcart'])){
+        
         $nameprd = $_POST['nameprd'];
         $namecate = $_POST['namecate'];
         $img = $_POST['imgprd'];
         $priceprd = $_POST['priceprd'];
         $soluong = $_POST['soluong'];
         $fl = 0;
+       
         for ($i=0; $i < sizeof($_SESSION['giohang']); $i++) { 
             if($_SESSION['giohang'][$i][2]==$nameprd){
                 $fl=1;
@@ -61,44 +60,65 @@
 
 <body>
     <main>
-        
         <header>
             <div class="header-right">
-                <h1><a href="./index.html">Name</a></h1>
+                <?php
+                if (isset($_SESSION['user'])) {
+                    extract($_SESSION['user']);
+                    echo '<h1><a href="">Người Dùng: '.$username.'</a></h1>';
+                } else {
+                    echo '<h1><a href="">khách hàng</a></h1>';
+                }
+                ?>
+
             </div>
             <div class="header-left">
-                <div>
-                    <span>
-                        <a href="#">Đăng Nhập</a>
-                        /
-                        <a href="#">Đăng Kí</a>
-                    </span>
-                </div>
-                <div>
-                    | <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-search" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                <?php
+                if (isset($_SESSION['user'])) {
+                ?>
+                    <div>
+                        <span>
+                            <a href="../index.php?act=thongtin">Thông tin</a>
+                            /
+                            <a href="../index.php?act=dangxuat">Đăng xuất</a>
+                        </span>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <div>
+                        <span>
+                            <a href="../index.php?act=dangnhap">Đăng Nhập</a>
+                            /
+                            <a href="../index.php?act=dangky">Đăng Kí</a>
+                        </span>
+                    </div>
+                <?php
+                }
+                ?>
+                <div class="timkiem">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg></a>
                 </div>
-                <div>
-                    |
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-cart4" viewBox="0 0 16 16">
-                            <path
-                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                <div class="giohang">
+
+                    <a  href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                         </svg></a>
                 </div>
+                
             </div>
         </header>
+
 
         <div class="wapper">
             <nav>
                 <div class="logo">
-                    <img src="../images/logo.png" alt="HADES">
+                    <a href="../index.php"><img src="../images/logo.png" alt="HADES"></a>
                 </div>
                 <ul>
-                    <li><a href="index.php">SHOP ALL</a></li>
+                    <li><a href="../index.php">SHOP ALL</a></li>
                     <?php
                     foreach ($lstcate as $cate) {
                         extract($cate);
@@ -117,46 +137,43 @@
                             <div class="title">
                                 <div class="row">
                                     <div class="col">
-                                        <h4><b>Shopping Cart</b></h4>
+                                        <h4><b>GIỎ HÀNG</b></h4>
                                     </div>
-                                    <div class="col align-self-center text-right text-muted">3 items</div>
+                                    
                                     
                                 </div>
                             </div>
                                 <?php showcart(); ?>
                            
-                            
-                            
-                            
                     </div>
                 </div>
                 <form  action="bill.php" method="POST" class="cart">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Name</label>
-                        <input type="text" name="name_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" name="name_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Address</label>
-                        <input type="text" name="address_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" name="address_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Telephone</label>
-                        <input type="text" name="tel_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" name="tel_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" name="email_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email_buy" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Phương thức thanh toán</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="pttt" id="flexRadioDefault1" value="0">
                             <label class="form-check-label" for="flexRadioDefault1">
                                 Thanh toán khi nhận hàng
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            <input class="form-check-input" type="radio" name="pttt" id="flexRadioDefault2" value="2"
                                 checked>
                             <label class="form-check-label" for="flexRadioDefault2">
                                 Thanh toán qua thẻ ngân hàng

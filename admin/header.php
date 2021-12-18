@@ -21,11 +21,14 @@
             </div>
             <div class="menu-container">
                 <ul>
-                    <li><a href="index.php">TRANG CHỦ</a></li>
+                    <li><a href="../index.php">TRANG CHỦ</a></li>
                     <li><a href="index.php?act=addprd">SẢN PHẨM</a></li>
                     <li><a href="index.php?act=addcate">DANH MỤC</a></li>
                     <li><a href="index.php?act=qlbl">BÌNH LUẬN</a></li>
                     <li><a href="index.php?act=qltk">TÀI KHOẢN</a></li>
+                    <li><a href="index.php?act=qldh">ĐƠN HÀNG</a></li>
+                    <li><a href="index.php?act=thongke">THỐNG KÊ</a></li>
+
                 </ul>
             </div>
         </nav>
